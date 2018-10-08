@@ -1,11 +1,17 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 
 
 class IceCreamStore {
-    @observable iceCreams = [];
+    @observable 
+    iceCreams = [];
  
-    addIceCream(flavor ,color) {
+    @action addIceCream = (flavor ,color) => {
 	    this.iceCreams.push({ flavor, color });
+    }
+    @action deleteIceCream = (flavor) => {
+        debugger;
+        let index = this.iceCreams.findIndex(i => i.flavor ===flavor)
+        this.iceCreams.splice(index, 1)
     }
 }
 
